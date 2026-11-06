@@ -4,7 +4,7 @@
   'use strict';
 
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var desktop = window.matchMedia('(min-width: 74em)');
+  var desktop = window.matchMedia('(min-width: 78em)');
 
   /* Opened straight from a folder (file://) a link to "classes/" shows a directory listing,
      so point it at the index file. Has no effect on a real server. */
