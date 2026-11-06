@@ -201,7 +201,9 @@ a.card{color:var(--navy);text-decoration:none;display:block}
 
 /* Quotations */
 .scripture{max-width:46em;margin-inline:auto;text-align:center}
-.scripture blockquote{font-size:clamp(1.3125rem,1.1rem + .9vw,1.75rem);font-style:italic;line-height:1.5;text-wrap:balance}
+.scripture blockquote,.scripture .statement{font-size:clamp(1.3125rem,1.1rem + .9vw,1.75rem);font-style:italic;line-height:1.5;text-wrap:balance}
+.quoted::before{content:"C"}
+.quoted::after{content:"D"}
 .quote{border-left:2px solid var(--gold);padding-left:1.25rem;font-style:italic}
 .quote cite,.citation,.source{display:block;font-family:var(--sans);font-size:.9375rem;font-style:normal;color:var(--soft);line-height:1.5}
 .quote cite{margin-top:.6rem}
@@ -327,7 +329,6 @@ a.card{color:var(--navy);text-decoration:none;display:block}
 .band:not(.on-navy) h2,.band-tight:not(.on-navy) h2{color:var(--navy)}
 .band-tight .cta.on-navy h2{color:#FFF}
 .band-gold{background:var(--gold) var(--gilt);color:var(--navy-deep)}
-.band-gold .scripture::before{content:"\201C";display:block;font-size:6rem;line-height:.7;height:3.25rem;color:var(--navy)}
 .scripture .kicker{font-family:var(--sans);font-size:1rem;font-weight:700;letter-spacing:.08em;margin-bottom:1rem}
 .scripture cite{display:block;margin-top:1.1rem;font-family:var(--sans);font-size:1.0625rem;font-weight:600}
 .factbar+.band{padding-top:clamp(3rem,5vw,4.5rem)}
