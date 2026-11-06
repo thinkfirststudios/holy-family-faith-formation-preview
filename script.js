@@ -40,7 +40,8 @@
 
   /* Scroll reveals: photographs, panels and text ease in once as they arrive. */
   document.querySelectorAll('main .arch-line, main .prose, main .panel, main .prayer, main .embed, main .teaching').forEach(function (el) {
-    if (!el.closest('.reveal')) el.classList.add('reveal');
+    /* Long reading text stays put, so a link to a heading inside it lands exactly. */
+    if (!el.closest('.reveal') && !el.closest('.doc')) el.classList.add('reveal');
   });
   var targets = document.querySelectorAll('.reveal');
   if (reduced || !('IntersectionObserver' in window)) {
