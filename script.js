@@ -1,10 +1,9 @@
 /* Faith Formation for Children at Holy Family Church
-   Menu, dropdowns, header, gentle reveals. No third-party code, no tracking. */
+   Menu, header, gentle reveals. No third-party code, no tracking. */
 (function () {
   'use strict';
 
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var desktop = window.matchMedia('(min-width: 78em)');
 
   /* Opened straight from a folder (file://) a link to "classes/" shows a directory listing,
      so point it at the index file. Has no effect on a real server. */
@@ -30,36 +29,6 @@
       menuBtn.textContent = open ? 'Close' : 'Menu';
     });
   }
-
-  /* Dropdowns: a real button beside a real link. Click, Enter, Space; Escape dismisses. */
-  var subs = Array.prototype.slice.call(document.querySelectorAll('.has-sub'));
-  function setSub(li, open) {
-    li.querySelector('.sub').classList.toggle('open', open);
-    li.querySelector('.sub-btn').setAttribute('aria-expanded', String(open));
-  }
-  subs.forEach(function (li) {
-    var btn = li.querySelector('.sub-btn');
-    btn.addEventListener('click', function () {
-      var open = btn.getAttribute('aria-expanded') !== 'true';
-      subs.forEach(function (o) { if (o !== li) setSub(o, false); });
-      setSub(li, open);
-    });
-    li.addEventListener('mouseenter', function () { if (desktop.matches) setSub(li, true); });
-    li.addEventListener('mouseleave', function () { if (desktop.matches) setSub(li, false); });
-    li.addEventListener('focusout', function (e) {
-      if (desktop.matches && !li.contains(e.relatedTarget)) setSub(li, false);
-    });
-  });
-  document.addEventListener('keydown', function (e) {
-    if (e.key !== 'Escape') return;
-    subs.forEach(function (li) {
-      var btn = li.querySelector('.sub-btn');
-      if (btn.getAttribute('aria-expanded') === 'true') {
-        setSub(li, false);
-        if (li.contains(document.activeElement)) btn.focus();
-      }
-    });
-  });
 
   /* Condensing header */
   var header = document.querySelector('.site-header');

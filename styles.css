@@ -85,7 +85,6 @@ main:focus{outline:0}
 .site-header{position:sticky;top:1.5625rem;z-index:50;background:var(--navy);color:#FFF;font-family:var(--sans)}
 .header-in{max-width:1600px;margin:auto;padding:.55rem var(--gutter);display:flex;flex-wrap:wrap;align-items:center;gap:.75rem;transition:padding .2s ease-out}
 .lockup{display:flex;align-items:center;gap:.7rem;flex:1 1 0;min-width:0;color:#FFF;text-decoration:none;min-height:44px}
-.lockup svg{width:1.9rem;height:2.6rem;flex:none;fill:none;stroke:#FFF;stroke-width:6}
 .lockup span{display:flex;flex-direction:column;line-height:1.15;min-width:0}
 .lockup b{font-family:var(--serif);font-weight:600;font-size:1.1875rem}
 .lockup small{font-size:.875rem;color:var(--gold-light);letter-spacing:.04em}
@@ -239,8 +238,7 @@ body{padding-bottom:3.75rem}
 .column p{font-size:1.0625rem;line-height:1.6;margin-top:.75rem}
 .column .more{display:inline-flex;min-height:44px;align-items:center;margin-top:.25rem;font-family:var(--sans);font-size:1rem}
 .col-intro{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;text-align:center}
-.col-intro svg{width:9rem;height:auto}
-.col-intro p{font-family:var(--sans);font-size:1.5rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;line-height:1.2}
+.col-intro img{width:100%;max-width:14rem;background:#FFF;padding:.5rem}
 
 /* ── Cards (ref-02) ─────────────────────────── */
 .grid{display:grid;gap:1.25rem;grid-template-columns:minmax(0,1fr)}
@@ -274,11 +272,6 @@ a.card:hover{transform:translateY(-2px)}
 .frame.r32,.frame.r45,.frame.r167{height:auto;min-height:12.5rem}
 .band-navy .frame{background:var(--navy-deep)}
 
-/* Photograph with ref-02's gold badge */
-.badged{position:relative}
-.badged .photo{border-radius:8px}
-.badge{position:absolute;right:1rem;top:1rem;background:var(--gold-btn);color:var(--navy-deep);font-family:var(--sans);text-align:center;padding:.65rem 1rem;border-radius:6px;line-height:1.15;font-size:.9375rem;font-weight:600;max-width:11rem}
-.badge b{display:block;font-size:1.75rem;font-weight:800}
 
 /* Scripture and Catechism quotations */
 .scripture{text-align:center;max-width:44em;margin-inline:auto}
@@ -369,8 +362,8 @@ a.card:hover{transform:translateY(-2px)}
 /* Prayers */
 .prayers{display:grid;gap:1.5rem;grid-template-columns:minmax(0,1fr)}
 .prayer{background:var(--white);border:1px solid var(--rule);border-radius:8px;box-shadow:var(--lift);padding:1.5rem}
-.prayer h2{font-size:1.625rem;color:var(--navy);margin-bottom:.75rem}
-.prayer p+h2{margin-top:1.5rem}
+.prayer h3{font-size:1.625rem;color:var(--navy);margin-bottom:.75rem}
+.prayer p+h3{margin-top:1.5rem}
 .prayer p{font-size:1.1875rem;line-height:1.75}
 .ln{display:inline}
 
@@ -386,7 +379,6 @@ a.card:hover{transform:translateY(-2px)}
 .site-footer a:hover{text-decoration:underline}
 .footer-grid{display:grid;gap:2rem;padding-block:2.75rem;grid-template-columns:minmax(0,1fr)}
 .footer-mark{display:flex;align-items:center;gap:.7rem;line-height:1.2}
-.footer-mark svg{width:2.4rem;height:3.3rem;flex:none;fill:none;stroke:#FFF;stroke-width:6}
 .footer-mark b{display:block;font-family:var(--serif);font-weight:600;font-size:1.3125rem}
 .footer-mark span span{color:var(--gold-light)}
 .footer-tag{margin-top:1rem;font-family:var(--serif);font-style:italic;color:var(--on-navy)}
@@ -404,9 +396,6 @@ a.card:hover{transform:translateY(-2px)}
 .draft{background:var(--gold-pale);border:1px solid var(--gold);padding:1rem 1.25rem;font-family:var(--sans);font-size:1.0625rem;max-width:var(--measure);margin-bottom:2rem}
 
 /* ── Wider screens ──────────────────────────── */
-@media (max-width:30em){
-  .lockup svg{display:none}
-}
 @media (max-width:40em){
   .column .r11{aspect-ratio:3/2}
 }
@@ -414,7 +403,7 @@ a.card:hover{transform:translateY(-2px)}
   .ln{display:block}
 }
 @media (min-width:40em){
-  .grid-2,.grid-4,.grid-5,.columns,.quotes{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .grid-2,.grid-3,.grid-4,.grid-5,.columns,.quotes{grid-template-columns:repeat(2,minmax(0,1fr))}
   .col-intro{grid-column:1/-1}
   .videos{grid-template-columns:repeat(2,minmax(0,1fr))}
   .teaching{grid-template-columns:5.5rem minmax(0,1fr)}
@@ -435,7 +424,7 @@ a.card:hover{transform:translateY(-2px)}
   .doc-nav{position:sticky;top:7.5rem}
   .trio{grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1.15fr)}
   .trio>.panel{grid-column:auto}
-  .quotes{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .quotes,.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
   /* Page heads split at the same line as the home hero */
   .ph{min-height:21rem}
   .ph>img{left:46%;width:54%}
@@ -469,18 +458,18 @@ a.card:hover{transform:translateY(-2px)}
   .grid-5{grid-template-columns:repeat(5,minmax(0,1fr))}
   .columns{grid-template-columns:1.1fr repeat(4,minmax(0,1fr));gap:2rem 2.25rem}
   .col-intro{grid-column:auto}
-  .footer-grid{grid-template-columns:1.5fr 1fr 1fr 1.1fr 1.3fr;gap:0}
+  .footer-grid{grid-template-columns:1.5fr 1.05fr 1.05fr 1.05fr 1.2fr;gap:0}
   .footer-grid>section{padding-inline:1.75rem;border-left:1px solid rgba(238,240,245,.18)}
   .footer-base .copy{flex-basis:auto;margin-right:auto}
 
   /* Full navigation */
   .header-in{flex-wrap:nowrap;gap:1.25rem;padding-block:.8rem}
   .condensed .header-in{padding-block:.3rem}
-  .lockup b{font-size:1.3125rem}
+  .lockup b{font-size:1.25rem}
   .sg-link-out,.menu-btn{display:none}
   .js .primary,.primary{display:block;flex-basis:auto;margin-left:auto}
   .primary>ul{display:flex;align-items:center;gap:.2rem;padding:0;margin:0;border:0}
-  .primary a{padding:.25rem .6rem;font-size:.875rem;font-weight:400;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap}
+  .primary a{padding:.25rem .55rem;font-size:.875rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
   .primary .nav-register{padding:.45rem 1.4rem;margin-left:.75rem;font-weight:700;letter-spacing:.14em}
   .nav-safeguard{display:block}
   .primary .sg-link{max-width:none;padding:.25rem .15rem;margin-left:.5rem;font-weight:600;white-space:nowrap;min-height:40px;flex:none}
@@ -523,7 +512,7 @@ a.card:hover{transform:translateY(-2px)}
   .ph h1,.hero h1{color:#000}
   .band,.band-tight{padding-block:.35cm}
   .band-pale,.band-raised,.band-mist{background:none;border:0}
-  .badge,.factbar svg,.chip{display:none}
+  .factbar svg,.chip{display:none}
   .wrap{padding-inline:0;max-width:none}
   .js .reveal{opacity:1;transform:none}
   .js .reveal-rule.rule::before{transform:none}
