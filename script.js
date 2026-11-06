@@ -58,7 +58,7 @@
     });
     /* The hero photograph drifts a little slower than the page. */
     var drift = document.querySelector('.hero-photo');
-    if (drift) {
+    if (drift && window.innerWidth >= 896) {
       drift.addEventListener('animationend', function () {
         window.addEventListener('scroll', function () {
           if (window.scrollY < 900) drift.style.transform = 'translateY(' + (window.scrollY * 0.12) + 'px)';

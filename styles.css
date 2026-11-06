@@ -166,7 +166,6 @@ body{padding-bottom:3.75rem}
 .factbar{position:relative;z-index:4;margin-top:-2.5rem;font-family:var(--sans)}
 .factbar dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));background:var(--gold) var(--gilt);box-shadow:0 20px 44px rgba(8,20,48,.28)}
 .factbar dl>div{display:flex;flex-direction:column-reverse;justify-content:flex-end;min-width:0;padding:1.15rem 1.25rem 1.2rem}
-.factbar dl>div+div{border-left:1px solid rgba(14,34,71,.16)}
 .factbar dt{font-size:.9375rem;font-weight:600;color:var(--navy-deep);line-height:1.3;margin-top:.15rem}
 .factbar dd{margin:0;font-family:var(--serif);font-size:clamp(1.25rem,1.1rem + .5vw,1.5rem);line-height:1.2;color:var(--navy-deep)}
 
@@ -247,7 +246,8 @@ a.card{color:var(--navy);text-decoration:none;display:block}
 .embed figcaption span{color:var(--soft);font-size:.9375rem}
 
 /* Sacraments */
-.sac-strip{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(5.75rem,1fr));gap:.75rem}
+.sac-strip{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:1.25rem .75rem}
+.sac-strip li{flex:0 0 calc((100% - 1.5rem)/3)}
 .sac-strip a{display:flex;flex-direction:column;align-items:center;gap:.5rem;text-align:center;font-family:var(--sans);font-size:1rem;line-height:1.25;color:#FFF;text-decoration:none;min-height:44px}
 .sac-strip img{width:5rem;height:auto;aspect-ratio:150/322;object-fit:cover;transition:transform .4s var(--ease)}
 .doc h3:target{animation:landed 2.4s var(--ease)}
@@ -296,6 +296,25 @@ a.card{color:var(--navy);text-decoration:none;display:block}
 .draft{background:var(--tint);padding:1rem 1.25rem;font-family:var(--sans);font-size:1.0625rem;margin-bottom:2rem}
 
 /* ── Wider screens ──────────────────────────── */
+@media (max-width:39.99em){
+  .factbar dl>div:last-child:nth-child(odd){grid-column:1/-1;align-items:center;text-align:center}
+}
+@media (max-width:55.99em){
+  /* The photograph sits whole above the title */
+  .hero{display:block;padding-top:0;min-height:0}
+  .hero-photo{position:relative;inset:auto;height:auto;aspect-ratio:16/10;opacity:1;object-position:50% 66%}
+  .hero .wrap{padding-top:1.5rem}
+  .hero-copy{display:flex;flex-direction:column}
+  .hero-copy>div:last-child{order:2}
+  .hero-copy .actions{order:3;margin-top:1.25rem}
+  .hero .status{margin-top:1rem}
+  /* The portrait leads the letter on small screens */
+  .letter-flip>.arch-line{order:-1}
+  .letter>.arch-line{width:100%;max-width:18rem;margin-inline:auto}
+}
+@media (max-width:77.99em){
+  .footer-base .wrap{justify-content:center;text-align:center}
+}
 @media (min-width:30em){
   .ln{display:block}
 }
@@ -304,6 +323,8 @@ a.card{color:var(--navy);text-decoration:none;display:block}
 .band-tight .cta.on-navy h2{color:#FFF}
 .band-gold{background:var(--gold) var(--gilt);color:var(--navy-deep)}
 .band-gold .scripture::before{content:"\201C";display:block;font-size:6rem;line-height:.7;height:3.25rem;color:var(--navy)}
+.scripture .kicker{font-family:var(--sans);font-size:1rem;font-weight:700;letter-spacing:.08em;margin-bottom:1rem}
+.scripture cite{display:block;margin-top:1.1rem;font-family:var(--sans);font-size:1.0625rem;font-weight:600}
 .band-cream{background:linear-gradient(180deg,#FBF4E2,#F7EBCD)}
 /* Photographs take the arch of the church doors, ringed by a fine gold line */
 .arch-line{position:relative;display:block}
@@ -353,8 +374,16 @@ a:hover .arch img,.tile:hover img{transform:scale(1.05)}
   .cta,.give{grid-template-columns:minmax(0,1fr) auto}
   .trio{grid-template-columns:repeat(2,minmax(0,1fr))}
   .trio>.panel{grid-column:1/-1}
-  .factbar dl{grid-template-columns:repeat(3,minmax(0,1fr))}
   .factbar{margin-top:-3.5rem}
+  /* Five facts as three over two, the second row filling the width */
+  .factbar dl{grid-template-columns:repeat(6,minmax(0,1fr))}
+  .factbar dl>div{grid-column:span 2}
+  .factbar dl>div:nth-child(n+4){grid-column:span 3}
+  .sac-strip li{flex-basis:calc((100% - 2.25rem)/4)}
+  /* An odd last item sits centred on its own row */
+  .videos>:last-child:nth-child(odd),.grid-5>:last-child:nth-child(odd){grid-column:1/-1;justify-self:center;width:calc(50% - 1.5rem)}
+  .bio>:last-child:nth-child(odd){grid-column:1/-1;text-align:center}
+  .footer-grid>:last-child:nth-child(odd){grid-column:1/-1;justify-self:center;text-align:center}
 }
 @media (min-width:56em){
   /* The photograph sits to the right and dissolves into the navy */
@@ -362,7 +391,8 @@ a:hover .arch img,.tile:hover img{transform:scale(1.05)}
   .ph{align-items:center;min-height:22rem}
   .ph-plain{min-height:0}
   .ph-copy{max-width:min(38rem,46vw)}
-  .hero-copy{max-width:min(40rem,50vw)}
+  .hero-copy{max-width:min(36rem,36vw)}
+  .hero-photo{object-position:50% 68%;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 13%);mask-image:linear-gradient(90deg,transparent 0,#000 13%)}
   .hero .actions{margin-top:clamp(1.1rem,3vh,2rem)}
   .fees-photo{position:absolute;left:0;top:0;width:58%;height:100%;aspect-ratio:auto;margin:0;-webkit-mask-image:linear-gradient(90deg,#000 52%,transparent);mask-image:linear-gradient(90deg,#000 52%,transparent)}
   .fees-copy{margin-left:auto;width:min(46%,34rem)}
@@ -376,17 +406,25 @@ a:hover .arch img,.tile:hover img{transform:scale(1.05)}
   .trio{grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1.15fr);gap:3rem}
   .trio>.panel{grid-column:auto}
   .grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .sac-strip li{flex-basis:calc((100% - 4.5rem)/7)}
 }
 @media (min-width:66em){
   .prayers{grid-template-columns:repeat(2,minmax(0,1fr))}
   .factbar dl{grid-template-columns:1fr 1fr 1.35fr 1.1fr .9fr}
+  .factbar dl>div,.factbar dl>div:nth-child(n+4){grid-column:auto}
+  .factbar dl>div+div{border-left:1px solid rgba(14,34,71,.16)}
   .factbar dd{white-space:nowrap}
+}
+@media (min-width:100em){
+  .hero-photo{width:55%}
 }
 @media (min-width:78em){
   .columns{grid-template-columns:repeat(4,minmax(0,1fr));gap:2.5rem}
   .grid-4{grid-template-columns:repeat(4,minmax(0,1fr))}
   .grid-5{grid-template-columns:repeat(5,minmax(0,1fr))}
+  .grid-5>:last-child:nth-child(odd){grid-column:auto;width:auto;justify-self:stretch}
   .footer-grid{grid-template-columns:1.5fr 1fr 1fr 1fr 1.2fr;gap:2.5rem}
+  .footer-grid>:last-child:nth-child(odd){grid-column:auto;justify-self:stretch;text-align:left}
   .footer-base .copy{flex-basis:auto;margin-right:auto}
 
   .header-in{flex-wrap:nowrap;gap:0;padding-block:.95rem}
