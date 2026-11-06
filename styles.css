@@ -16,9 +16,9 @@
   --line:#E3E6EC;
   --navy:#0E2247;
   --navy-deep:#081430;
-  --gold:#D8B56A;
+  --gold:#E4B24C;
   --gold-deep:#7A5C1E;
-  --gold-panel:#E9DAB3;
+  --gold-panel:#F0D99A;
   --on-navy:#E9ECF3;
 
   --serif:"Spectral",Georgia,"Times New Roman",serif;
@@ -28,6 +28,10 @@
   --band:clamp(4rem,9vw,8rem);
   --ease:cubic-bezier(.2,.7,.2,1);
   --sweep:linear-gradient(135deg,var(--navy) 0%,var(--navy-deep) 100%);
+  --gilt:linear-gradient(115deg,#F6DE9E 0%,#E4B24C 100%);
+  /* The accent colours are the parish's own, sampled from its seven sacrament panels. */
+  --s1:#2F93AE;--s2:#7A1620;--s3:#A83048;--s4:#5A2182;--s5:#B8962F;--s6:#189048;--s7:#B8352E;
+  --glass:linear-gradient(90deg,var(--s1) 0 14.28%,var(--s2) 14.28% 28.57%,var(--s3) 28.57% 42.85%,var(--s4) 42.85% 57.14%,var(--s5) 57.14% 71.42%,var(--s6) 71.42% 85.71%,var(--s7) 85.71% 100%);
 }
 /* TEAL ALTERNATIVE — if the parish confirms the teal is its brand colour, uncomment this one block.
 :root{
@@ -58,12 +62,7 @@ main:focus{outline:0}
 .skip{position:absolute;left:.75rem;top:-5rem;z-index:100;background:var(--white);color:var(--ink);padding:.75rem 1rem;font-family:var(--sans);border:2px solid var(--navy)}
 .skip:focus{top:.75rem}
 
-/* Open questions stay visible until answered, but quietly. */
-.m{font-family:var(--sans);font-size:.875rem;line-height:1.5;font-weight:400;font-style:normal;letter-spacing:0;text-transform:none;color:var(--soft)}
-.on-navy .m{color:var(--on-navy)}
-.m-row{margin-top:1.25rem;display:flex;flex-wrap:wrap;gap:.1rem 1rem}
 .center{text-align:center}
-.center.m-row{justify-content:center}
 
 /* ── Header ─────────────────────────────────── */
 .devbar{position:sticky;top:0;z-index:60;background:var(--navy-deep);color:var(--on-navy);font-family:var(--sans);font-size:.875rem;line-height:1.5rem;text-align:center}
@@ -130,7 +129,7 @@ body{padding-bottom:3.75rem}
 .crumbs li+li::before{content:"/";margin-right:.5rem;opacity:.6}
 .standfirst{margin-top:1rem;font-size:1.25rem;font-style:italic}
 
-.hero{display:flex;align-items:center;min-height:min(80vh,42rem);padding-block:clamp(3.5rem,7vw,6rem)}
+.hero{display:flex;align-items:center;min-height:min(80vh,42rem);padding-block:clamp(3.5rem,7vw,6rem) clamp(5.5rem,10vw,8rem)}
 .hero-copy{max-width:38rem}
 .hero-copy>*{position:relative}
 .js .hero-copy>*{animation:rise 1s var(--ease) both}
@@ -146,7 +145,7 @@ body{padding-bottom:3.75rem}
 .btn-primary{background:var(--navy);color:#FFF;border:1px solid var(--navy)}
 .btn-primary:hover{background:var(--navy-deep)}
 .btn-outline{color:var(--navy);border:1px solid var(--navy);background:transparent}
-.on-navy .btn-primary,.btn-gold{background:var(--gold) linear-gradient(180deg,#E6C888,var(--gold));color:var(--navy-deep);border:1px solid var(--gold)}
+.on-navy .btn-primary,.btn-gold{background:var(--gold) linear-gradient(180deg,#F2CF7E,var(--gold));color:var(--navy-deep);border:1px solid var(--gold)}
 .on-navy .btn-primary:hover,.btn-gold:hover{background:#FFF;border-color:#FFF}
 .on-navy .btn-outline{color:#FFF;border-color:rgba(255,255,255,.55)}
 .on-navy .btn-outline:hover{background:#FFF;color:var(--navy);border-color:#FFF}
@@ -166,12 +165,17 @@ body{padding-bottom:3.75rem}
 .page-status .status-in{max-width:1320px;margin:auto;padding:1rem var(--gutter)}
 [hidden]{display:none!important}
 
-/* The facts: type alone */
-.factbar{border-bottom:1px solid var(--line);font-family:var(--sans);padding-block:2rem}
-.factbar dl{display:grid;gap:1.25rem 2rem;grid-template-columns:repeat(2,minmax(0,1fr))}
-.factbar dl>div{display:flex;flex-direction:column-reverse;justify-content:flex-end;min-width:0}
-.factbar dt{font-size:.9375rem;color:var(--soft);line-height:1.35;margin-top:.15rem}
-.factbar dd{margin:0;font-family:var(--serif);font-size:clamp(1.25rem,1.1rem + .6vw,1.625rem);line-height:1.25;color:var(--navy)}
+/* The facts: a gold panel lifted over the edge of the hero */
+.factbar{position:relative;z-index:4;margin-top:-2.5rem;font-family:var(--sans)}
+.factbar dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));background:var(--gold) var(--gilt);box-shadow:0 20px 44px rgba(8,20,48,.28)}
+.factbar dl>div{display:flex;flex-direction:column-reverse;justify-content:flex-end;min-width:0;padding:1.15rem 1.25rem 1.2rem;border-top:5px solid var(--c,var(--navy))}
+.factbar dl>div:nth-child(1){--c:var(--s1)}
+.factbar dl>div:nth-child(2){--c:var(--s7)}
+.factbar dl>div:nth-child(3){--c:var(--s4)}
+.factbar dl>div:nth-child(4){--c:var(--s6)}
+.factbar dl>div:nth-child(5){--c:var(--s2)}
+.factbar dt{font-size:.9375rem;font-weight:600;color:var(--navy-deep);line-height:1.3;margin-top:.15rem}
+.factbar dd{margin:0;font-family:var(--serif);font-size:clamp(1.25rem,1.1rem + .5vw,1.5rem);line-height:1.2;color:var(--navy-deep)}
 
 /* The four classes */
 .columns{display:grid;gap:3rem 2rem;grid-template-columns:minmax(0,1fr);margin-top:3rem}
@@ -302,6 +306,45 @@ a.card{color:var(--navy);text-decoration:none;display:block}
 @media (min-width:30em){
   .ln{display:block}
 }
+/* Accent and depth */
+.hero::after,.ph::after,.site-footer::before{content:"";position:absolute;left:0;right:0;height:6px;background:var(--glass)}
+.hero::after,.ph::after{bottom:0;z-index:3;transform-origin:left}
+.js .hero::after,.js .ph::after{animation:draw 1.5s .2s var(--ease) both}
+@keyframes draw{from{transform:scaleX(0)}}
+.site-footer{position:relative}
+.site-footer::before{top:0}
+.band:not(.on-navy) h2,.band-tight:not(.on-navy) h2{color:var(--navy)}
+.band-tight .cta.on-navy h2{color:#FFF}
+.band-gold{background:var(--gold) var(--gilt);color:var(--navy-deep)}
+.band-gold .scripture::before{content:"\201C";display:block;font-size:6rem;line-height:.7;height:3.25rem;color:var(--navy)}
+.band-cream{background:linear-gradient(180deg,#FBF4E2,#F7EBCD)}
+.offset{position:relative;z-index:0}
+.offset::before{content:"";position:absolute;z-index:-1;inset:1.1rem -1.1rem -1.1rem 1.1rem;background:var(--c,var(--gold))}
+.offset-flip::before{inset:1.1rem 1.1rem -1.1rem -1.1rem}
+.column{--c:var(--s1);border-top:6px solid var(--c);transition:transform .45s var(--ease)}
+.column:nth-child(2){--c:var(--s7)}
+.column:nth-child(3){--c:var(--gold)}
+.column:nth-child(4){--c:var(--s6)}
+.column:hover{transform:translateY(-6px)}
+.column h3{color:var(--gold-panel)}
+.row{padding-left:1.75rem;transition:background-color .3s}
+.row::before{content:"";position:absolute;left:0;top:50%;width:.8rem;height:.8rem;margin-top:-.4rem;background:var(--c,var(--s1));transition:transform .4s var(--ease)}
+.row:hover{background:#FBF4E2}
+.row:hover::before{transform:scale(1.35) rotate(45deg)}
+.row:nth-child(6n+2),.card:nth-child(4n+2),.prayer:nth-child(6n+2){--c:var(--s7)}
+.row:nth-child(6n+3),.card:nth-child(4n+3),.prayer:nth-child(6n+3){--c:var(--s5)}
+.row:nth-child(6n+4),.card:nth-child(4n),.prayer:nth-child(6n+4){--c:var(--s4)}
+.row:nth-child(6n+5),.prayer:nth-child(6n+5){--c:var(--s6)}
+.row:nth-child(6n),.prayer:nth-child(6n){--c:var(--s3)}
+.card,.prayer{border-top:4px solid var(--c,var(--s1))}
+.sac-home{margin-top:2rem}
+.sac-home a{color:var(--navy)}
+.sac-home img{width:clamp(4rem,9vw,7rem)}
+.cta>img{position:absolute;top:0;right:0;width:60%;height:100%;object-fit:cover;-webkit-mask-image:linear-gradient(90deg,transparent,#000 70%);mask-image:linear-gradient(90deg,transparent,#000 70%)}
+.cta::before{display:none}
+.cta .btn{z-index:1}
+.panel-gold{background:var(--gold) var(--gilt)}
+
 @media (min-width:40em){
   .grid-2,.grid-3,.grid-4,.grid-5,.columns{grid-template-columns:repeat(2,minmax(0,1fr))}
   .videos{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -312,6 +355,7 @@ a.card{color:var(--navy);text-decoration:none;display:block}
   .trio{grid-template-columns:repeat(2,minmax(0,1fr))}
   .trio>.panel{grid-column:1/-1}
   .factbar dl{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .factbar{margin-top:-3.5rem}
 }
 @media (min-width:56em){
   /* The photograph sits to the right and dissolves into the navy */
@@ -330,10 +374,11 @@ a.card{color:var(--navy);text-decoration:none;display:block}
   .trio{grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1.15fr);gap:3rem}
   .trio>.panel{grid-column:auto}
   .grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
-  .factbar dl{grid-template-columns:repeat(5,minmax(0,1fr))}
 }
 @media (min-width:66em){
   .prayers{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .factbar dl{grid-template-columns:1fr 1fr 1.35fr 1.1fr .9fr}
+  .factbar dd{white-space:nowrap}
 }
 @media (min-width:78em){
   .columns{grid-template-columns:repeat(4,minmax(0,1fr));gap:2.5rem}
@@ -367,7 +412,7 @@ a.card{color:var(--navy);text-decoration:none;display:block}
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
   .js .reveal,.js img.reveal{opacity:1;transform:none;clip-path:none}
-  .btn:hover{transform:none}
+  .btn:hover,.column:hover{transform:none}
   .column:hover .photo{transform:none}
 }
 
@@ -377,15 +422,17 @@ a.card{color:var(--navy);text-decoration:none;display:block}
   body{background:#FFF;color:#000;font-size:11.5pt;padding:0}
   .site-header,.mobile-bar,.site-footer,.skip,.crumbs,.embed-frame iframe,.ph>img,.hero-photo,.cta,.no-print{display:none!important}
   .devbar{position:static;background:none;color:#000;text-align:left;font-size:9pt}
-  .ph,.hero,.band-navy{background:none!important;color:#000!important;padding-block:0 .5cm;min-height:0!important}
+  .hero::after,.ph::after,.site-footer::before,.offset::before,.cta>img{display:none}
+  .factbar{margin-top:0}
+  .factbar dl{box-shadow:none}
+  .ph,.hero,.band-navy,.band-gold,.band-cream,.factbar dl{background:none!important;color:#000!important;padding-block:0 .5cm;min-height:0!important}
   .ph h1,.hero h1,.column h3,.column p,.column .age{color:#000}
   .band,.band-tight{padding-block:.35cm}
   .band-raised,.band-pale{background:none}
   .wrap{padding-inline:0;max-width:none}
   .js .reveal,.js img.reveal{opacity:1;transform:none;clip-path:none}
   a{color:#000}
-  .on-navy .m{color:#000}
-  .prose a[href^="http"]::after{content:" (" attr(href) ")";font-size:9pt;word-break:break-all}
+    .prose a[href^="http"]::after{content:" (" attr(href) ")";font-size:9pt;word-break:break-all}
   .prayers{display:block;columns:2;column-gap:.7cm}
   .prayer{break-inside:avoid;border-top:1px solid #000;padding-top:.2cm;margin-bottom:.4cm}
   .prayer p{font-size:10.5pt;line-height:1.5}
