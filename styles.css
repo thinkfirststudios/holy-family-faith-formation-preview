@@ -202,8 +202,8 @@ a.card{color:var(--navy);text-decoration:none;display:block}
 /* Quotations */
 .scripture{max-width:46em;margin-inline:auto;text-align:center}
 .scripture blockquote,.scripture .statement{font-size:clamp(1.3125rem,1.1rem + .9vw,1.75rem);font-style:italic;line-height:1.5;text-wrap:balance}
-.quoted::before{content:"C"}
-.quoted::after{content:"D"}
+.quoted::before{content:"\201C"}
+.quoted::after{content:"\201D"}
 .quote{border-left:2px solid var(--gold);padding-left:1.25rem;font-style:italic}
 .quote cite,.citation,.source{display:block;font-family:var(--sans);font-size:.9375rem;font-style:normal;color:var(--soft);line-height:1.5}
 .quote cite{margin-top:.6rem}
