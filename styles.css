@@ -7,6 +7,9 @@
 @font-face{font-family:"Spectral";font-style:normal;font-weight:600;font-display:swap;src:url("assets/fonts/spectral-600.woff2") format("woff2")}
 @font-face{font-family:"Source Sans 3";font-style:normal;font-weight:400 800;font-display:swap;src:url("assets/fonts/source-sans-3-var.woff2") format("woff2")}
 
+/* Spectral draws $ with two strokes, so that one character comes from Source Sans. */
+@font-face{font-family:"Single Dollar";font-style:normal;font-weight:400 800;font-display:swap;src:url("assets/fonts/source-sans-3-var.woff2") format("woff2");unicode-range:U+24}
+
 /* PALETTE — one navy, one gold, white. Everything else is a tint of these. */
 :root{
   --white:#FFFFFF;
@@ -21,7 +24,7 @@
   --gold-panel:#F0D99A;
   --on-navy:#E9ECF3;
 
-  --serif:"Spectral",Georgia,"Times New Roman",serif;
+  --serif:"Single Dollar","Spectral",Georgia,"Times New Roman",serif;
   --sans:"Source Sans 3","Segoe UI",Arial,sans-serif;
   --measure:36em;
   --gutter:clamp(1.25rem,5vw,5rem);
