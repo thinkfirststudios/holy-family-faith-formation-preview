@@ -60,6 +60,7 @@ main:focus{outline:0}
 .skip:focus{top:.75rem}
 
 .center{text-align:center}
+.nb{white-space:nowrap}
 
 /* ── Header ─────────────────────────────────── */
 .devbar{position:sticky;top:0;z-index:60;background:var(--navy-deep);color:var(--on-navy);font-family:var(--sans);font-size:.875rem;line-height:1.5rem;text-align:center}
