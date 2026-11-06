@@ -31,7 +31,6 @@
   --gilt:linear-gradient(115deg,#F6DE9E 0%,#E4B24C 100%);
   /* The accent colours are the parish's own, sampled from its seven sacrament panels. */
   --s1:#2F93AE;--s2:#7A1620;--s3:#A83048;--s4:#5A2182;--s5:#B8962F;--s6:#189048;--s7:#B8352E;
-  --glass:linear-gradient(90deg,var(--s1) 0 14.28%,var(--s2) 14.28% 28.57%,var(--s3) 28.57% 42.85%,var(--s4) 42.85% 57.14%,var(--s5) 57.14% 71.42%,var(--s6) 71.42% 85.71%,var(--s7) 85.71% 100%);
 }
 /* TEAL ALTERNATIVE — if the parish confirms the teal is its brand colour, uncomment this one block.
 :root{
@@ -129,15 +128,15 @@ body{padding-bottom:3.75rem}
 .crumbs li+li::before{content:"/";margin-right:.5rem;opacity:.6}
 .standfirst{margin-top:1rem;font-size:1.25rem;font-style:italic}
 
-.hero{display:flex;align-items:center;min-height:min(80vh,42rem);padding-block:clamp(3.5rem,7vw,6rem) clamp(5.5rem,10vw,8rem)}
+.hero{display:flex;align-items:center;min-height:min(calc(100vh - 11rem),38rem);padding-block:clamp(1.75rem,5vh,4rem) clamp(4.5rem,10vh,6.5rem)}
 .hero-copy{max-width:38rem}
 .hero-copy>*{position:relative}
 .js .hero-copy>*{animation:rise 1s var(--ease) both}
 .js .hero-copy>:nth-child(2){animation-delay:.12s}
 .js .hero-copy>:nth-child(3){animation-delay:.24s}
 .js .hero-copy>:nth-child(4){animation-delay:.36s}
-.hero h1{font-size:clamp(2.5rem,1.7rem + 2.7vw,3.875rem);line-height:1.08}
-.hero-tag{margin-top:1.1rem;font-size:clamp(1.1875rem,1.1rem + .4vw,1.375rem);font-style:italic;color:var(--on-navy)}
+.hero h1{font-size:clamp(2.25rem,min(1.7rem + 2.7vw,7.4vh),3.875rem);line-height:1.08}
+.hero-tag{margin-top:.75rem;font-size:clamp(1.1875rem,1.1rem + .4vw,1.375rem);font-style:italic;color:var(--on-navy)}
 
 /* Buttons */
 .btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:.5rem 1.6rem;font-family:var(--sans);font-size:1.0625rem;font-weight:600;border-radius:3px;text-decoration:none;text-align:center;transition:transform .25s var(--ease),background-color .25s,color .25s,border-color .25s}
@@ -159,7 +158,7 @@ body{padding-bottom:3.75rem}
 .status p{margin:0}
 .status a{font-weight:600}
 .status-more{display:inline-flex;min-height:44px;align-items:center}
-.hero .status{margin-top:2.25rem;padding-top:1rem;border-top:1px solid rgba(233,236,243,.28)}
+.hero .status{margin-top:clamp(1rem,3vh,2rem);padding-top:.8rem;border-top:1px solid rgba(233,236,243,.28)}
 .hero .status a{color:#FFF}
 .page-status{background:var(--tint);border-bottom:1px solid var(--line)}
 .page-status .status-in{max-width:1320px;margin:auto;padding:1rem var(--gutter)}
@@ -168,12 +167,8 @@ body{padding-bottom:3.75rem}
 /* The facts: a gold panel lifted over the edge of the hero */
 .factbar{position:relative;z-index:4;margin-top:-2.5rem;font-family:var(--sans)}
 .factbar dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));background:var(--gold) var(--gilt);box-shadow:0 20px 44px rgba(8,20,48,.28)}
-.factbar dl>div{display:flex;flex-direction:column-reverse;justify-content:flex-end;min-width:0;padding:1.15rem 1.25rem 1.2rem;border-top:5px solid var(--c,var(--navy))}
-.factbar dl>div:nth-child(1){--c:var(--s1)}
-.factbar dl>div:nth-child(2){--c:var(--s7)}
-.factbar dl>div:nth-child(3){--c:var(--s4)}
-.factbar dl>div:nth-child(4){--c:var(--s6)}
-.factbar dl>div:nth-child(5){--c:var(--s2)}
+.factbar dl>div{display:flex;flex-direction:column-reverse;justify-content:flex-end;min-width:0;padding:1.15rem 1.25rem 1.2rem}
+.factbar dl>div+div{border-left:1px solid rgba(14,34,71,.16)}
 .factbar dt{font-size:.9375rem;font-weight:600;color:var(--navy-deep);line-height:1.3;margin-top:.15rem}
 .factbar dd{margin:0;font-family:var(--serif);font-size:clamp(1.25rem,1.1rem + .5vw,1.5rem);line-height:1.2;color:var(--navy-deep)}
 
@@ -189,7 +184,7 @@ body{padding-bottom:3.75rem}
 
 /* Link rows in place of cards */
 .grid{display:grid;gap:0 3rem;grid-template-columns:minmax(0,1fr)}
-.row{position:relative;display:flex;align-items:center;min-height:5rem;padding-block:1.1rem;border-top:1px solid var(--line);color:var(--navy);text-decoration:none;overflow:hidden}
+.row{position:relative;display:flex;align-items:center;min-height:5rem;padding-block:1.1rem;border-top:1px solid var(--line);color:var(--navy);text-decoration:none}
 .row::after{content:"";position:absolute;left:0;top:-1px;height:1px;width:100%;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
 .row:hover::after{transform:scaleX(1)}
 .row h2,.row h3{font-size:clamp(1.3125rem,1.2rem + .5vw,1.625rem);line-height:1.25;letter-spacing:0;transition:transform .4s var(--ease)}
@@ -307,12 +302,6 @@ a.card{color:var(--navy);text-decoration:none;display:block}
   .ln{display:block}
 }
 /* Accent and depth */
-.hero::after,.ph::after,.site-footer::before{content:"";position:absolute;left:0;right:0;height:6px;background:var(--glass)}
-.hero::after,.ph::after{bottom:0;z-index:3;transform-origin:left}
-.js .hero::after,.js .ph::after{animation:draw 1.5s .2s var(--ease) both}
-@keyframes draw{from{transform:scaleX(0)}}
-.site-footer{position:relative}
-.site-footer::before{top:0}
 .band:not(.on-navy) h2,.band-tight:not(.on-navy) h2{color:var(--navy)}
 .band-tight .cta.on-navy h2{color:#FFF}
 .band-gold{background:var(--gold) var(--gilt);color:var(--navy-deep)}
@@ -327,8 +316,8 @@ a.card{color:var(--navy);text-decoration:none;display:block}
 .column:nth-child(4){--c:var(--s6)}
 .column:hover{transform:translateY(-6px)}
 .column h3{color:var(--gold-panel)}
-.row{padding-left:1.75rem;transition:background-color .3s}
-.row::before{content:"";position:absolute;left:0;top:50%;width:.8rem;height:.8rem;margin-top:-.4rem;background:var(--c,var(--s1));transition:transform .4s var(--ease)}
+.row{padding-left:2.5rem;transition:background-color .3s}
+.row::before{content:"";position:absolute;left:.75rem;top:50%;width:.8rem;height:.8rem;margin-top:-.4rem;background:var(--c,var(--s1));transition:transform .4s var(--ease)}
 .row:hover{background:#FBF4E2}
 .row:hover::before{transform:scale(1.35) rotate(45deg)}
 .row:nth-child(6n+2),.card:nth-child(4n+2),.prayer:nth-child(6n+2){--c:var(--s7)}
@@ -363,7 +352,8 @@ a.card{color:var(--navy);text-decoration:none;display:block}
   .ph{align-items:center;min-height:22rem}
   .ph-plain{min-height:0}
   .ph-copy{max-width:min(38rem,46vw)}
-  .hero-copy{max-width:min(38rem,48vw)}
+  .hero-copy{max-width:min(40rem,50vw)}
+  .hero .actions{margin-top:clamp(1.1rem,3vh,2rem)}
   .intro{grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr)}
   .letter{grid-template-columns:minmax(14rem,20rem) minmax(0,1fr);gap:4.5rem}
   .letter-flip{grid-template-columns:minmax(0,1fr) minmax(14rem,20rem)}
@@ -390,8 +380,9 @@ a.card{color:var(--navy);text-decoration:none;display:block}
   .header-in{flex-wrap:nowrap;gap:1.5rem;padding-block:.95rem}
   .condensed .header-in{padding-block:.45rem}
   .menu-btn{display:none}
+  .lockup b{font-size:clamp(1.0625rem,.35rem + .9vw,1.25rem);white-space:nowrap}
   .js .primary,.primary{display:block;flex-basis:auto;margin-left:auto}
-  .primary>ul{display:flex;align-items:center;gap:1.5rem;padding:0;margin:0;border:0}
+  .primary>ul{display:flex;align-items:center;gap:clamp(.9rem,1.5vw,1.5rem);padding:0;margin:0;border:0}
   .primary a{padding:.25rem 0;font-size:1rem;white-space:nowrap}
   .primary a::after{content:"";position:absolute;left:0;right:0;bottom:.45rem;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
   .primary a:hover::after,.primary a[aria-current]::after{transform:scaleX(1)}
@@ -422,7 +413,7 @@ a.card{color:var(--navy);text-decoration:none;display:block}
   body{background:#FFF;color:#000;font-size:11.5pt;padding:0}
   .site-header,.mobile-bar,.site-footer,.skip,.crumbs,.embed-frame iframe,.ph>img,.hero-photo,.cta,.no-print{display:none!important}
   .devbar{position:static;background:none;color:#000;text-align:left;font-size:9pt}
-  .hero::after,.ph::after,.site-footer::before,.offset::before,.cta>img{display:none}
+  .offset::before,.cta>img{display:none}
   .factbar{margin-top:0}
   .factbar dl{box-shadow:none}
   .ph,.hero,.band-navy,.band-gold,.band-cream,.factbar dl{background:none!important;color:#000!important;padding-block:0 .5cm;min-height:0!important}
