@@ -334,6 +334,9 @@ a.card{color:var(--navy);text-decoration:none;display:block}
 a:hover .arch img,.tile:hover img{transform:scale(1.05)}
 .welcome-arch,.class-arch{max-width:24rem;margin-inline:auto;padding-top:.55rem;width:100%}
 .letter .arch-line{margin-top:.55rem}
+.welcome-arch{max-width:34rem}
+.welcome-arch .arch{aspect-ratio:5/4;border-radius:8rem 8rem 0 0}
+.welcome-arch .arch-line::before{border-radius:8.5rem 8.5rem 0 0}
 .arch-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2rem;padding-top:.55rem}
 /* A tile is a link: photograph, gradient, title */
 .tile{position:relative;display:block;overflow:hidden;aspect-ratio:3/2;color:#FFF;text-decoration:none;background:var(--navy)}
