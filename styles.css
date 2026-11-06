@@ -363,6 +363,11 @@ a:hover .arch img,.tile:hover img{transform:scale(1.05)}
 .cta>img{position:absolute;top:0;right:0;width:60%;height:100%;object-fit:cover;object-position:50% 30%;opacity:.6;-webkit-mask-image:linear-gradient(90deg,transparent,#000 70%);mask-image:linear-gradient(90deg,transparent,#000 70%)}
 .cta::before{display:none}
 .cta .btn{z-index:1}
+.cta h2 a{color:#FFF;text-decoration:none}
+.cta h2 a:hover{text-decoration:underline;text-decoration-color:var(--gold);text-decoration-thickness:1px}
+.cta-contact{display:flex;flex-wrap:wrap;gap:0 1.75rem;margin-top:.5rem;font-size:1.0625rem}
+.cta-contact a{display:inline-flex;align-items:center;min-height:44px;color:#FFF}
+.cta a.btn-gold{color:var(--navy-deep)}
 .panel-gold{background:var(--gold) var(--gilt)}
 
 @media (min-width:40em){
