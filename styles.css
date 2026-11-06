@@ -29,8 +29,6 @@
   --ease:cubic-bezier(.2,.7,.2,1);
   --sweep:linear-gradient(135deg,var(--navy) 0%,var(--navy-deep) 100%);
   --gilt:linear-gradient(115deg,#F6DE9E 0%,#E4B24C 100%);
-  /* The accent colours are the parish's own, sampled from its seven sacrament panels. */
-  --s1:#2F93AE;--s2:#7A1620;--s3:#A83048;--s4:#5A2182;--s5:#B8962F;--s6:#189048;--s7:#B8352E;
 }
 /* TEAL ALTERNATIVE — if the parish confirms the teal is its brand colour, uncomment this one block.
 :root{
@@ -174,9 +172,7 @@ body{padding-bottom:3.75rem}
 
 /* The four classes */
 .columns{display:grid;gap:3rem 2rem;grid-template-columns:minmax(0,1fr);margin-top:3rem}
-.column .pic{overflow:hidden}
-.column .photo{transition:transform 1.2s var(--ease)}
-.column:hover .photo{transform:scale(1.04)}
+.column .pic{display:block;padding:.55rem .55rem 0}
 .column h3{font-family:var(--serif);font-size:1.4375rem;line-height:1.25;margin-top:1.25rem;color:#FFF}
 .column .age{display:block;margin-top:.25rem;font-family:var(--sans);font-size:1rem;color:var(--gold)}
 .column p{font-size:1.0625rem;line-height:1.6;margin-top:.75rem;color:var(--on-navy)}
@@ -307,29 +303,41 @@ a.card{color:var(--navy);text-decoration:none;display:block}
 .band-gold{background:var(--gold) var(--gilt);color:var(--navy-deep)}
 .band-gold .scripture::before{content:"\201C";display:block;font-size:6rem;line-height:.7;height:3.25rem;color:var(--navy)}
 .band-cream{background:linear-gradient(180deg,#FBF4E2,#F7EBCD)}
-.offset{position:relative;z-index:0}
-.offset::before{content:"";position:absolute;z-index:-1;inset:1.1rem -1.1rem -1.1rem 1.1rem;background:var(--c,var(--gold))}
-.offset-flip::before{inset:1.1rem 1.1rem -1.1rem -1.1rem}
-.column{--c:var(--s1);border-top:6px solid var(--c);transition:transform .45s var(--ease)}
-.column:nth-child(2){--c:var(--s7)}
-.column:nth-child(3){--c:var(--gold)}
-.column:nth-child(4){--c:var(--s6)}
-.column:hover{transform:translateY(-6px)}
+/* Photographs take the arch of the church doors, ringed by a fine gold line */
+.arch-line{position:relative;display:block}
+.arch-line::before{content:"";position:absolute;inset:-.55rem -.55rem 0;border:1px solid var(--gold);border-bottom:0;border-radius:999px 999px 0 0;pointer-events:none}
+.arch{display:block;overflow:hidden;aspect-ratio:4/5;border-radius:999px 999px 0 0;background:var(--navy)}
+.arch img,.tile img{width:100%;height:100%;object-fit:cover;filter:saturate(.94) contrast(1.03);transition:transform 1.2s var(--ease)}
+a:hover .arch img,.tile:hover img{transform:scale(1.05)}
+.welcome-arch,.class-arch{max-width:24rem;margin-inline:auto;padding-top:.55rem;width:100%}
+.letter .arch-line{margin-top:.55rem}
+.arch-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2rem;padding-top:.55rem}
+/* A tile is a link: photograph, gradient, title */
+.tile{position:relative;display:block;overflow:hidden;aspect-ratio:3/2;color:#FFF;text-decoration:none;background:var(--navy)}
+.tile::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(8,20,48,.96),rgba(8,20,48,.7) 34%,rgba(8,20,48,0) 72%)}
+.tile h3{position:absolute;z-index:1;left:1.25rem;bottom:1rem;margin:0;color:#FFF;font-size:1.5rem;transition:transform .4s var(--ease)}
+.tile:hover h3{transform:translateY(-4px)}
+/* The First Communion graphic leads this section */
+.feature{display:grid;gap:2rem;grid-template-columns:minmax(0,1fr)}
+.feature-main{display:block;transition:transform .45s var(--ease)}
+.feature-main:hover{transform:translateY(-4px)}
+.feature-main img{width:100%;box-shadow:0 20px 44px rgba(8,20,48,.22)}
+.feature-side{display:grid;gap:1.5rem;align-content:start}
+.feature-side .tile{aspect-ratio:5/2}
+/* The church dissolves into the fees section */
+.fees{position:relative;overflow:hidden}
+.fees .wrap{position:relative;z-index:1}
+.fees-photo{display:block;width:100%;max-width:none;aspect-ratio:2/1;object-fit:cover;margin:calc(var(--band)*-1) 0 2.5rem}
 .column h3{color:var(--gold-panel)}
 .row{padding-left:2.5rem;transition:background-color .3s}
-.row::before{content:"";position:absolute;left:.75rem;top:50%;width:.8rem;height:.8rem;margin-top:-.4rem;background:var(--c,var(--s1));transition:transform .4s var(--ease)}
+.row::before{content:"";position:absolute;left:.75rem;top:50%;width:.8rem;height:.8rem;margin-top:-.4rem;background:var(--gold);transition:transform .4s var(--ease)}
 .row:hover{background:#FBF4E2}
 .row:hover::before{transform:scale(1.35) rotate(45deg)}
-.row:nth-child(6n+2),.card:nth-child(4n+2),.prayer:nth-child(6n+2){--c:var(--s7)}
-.row:nth-child(6n+3),.card:nth-child(4n+3),.prayer:nth-child(6n+3){--c:var(--s5)}
-.row:nth-child(6n+4),.card:nth-child(4n),.prayer:nth-child(6n+4){--c:var(--s4)}
-.row:nth-child(6n+5),.prayer:nth-child(6n+5){--c:var(--s6)}
-.row:nth-child(6n),.prayer:nth-child(6n){--c:var(--s3)}
-.card,.prayer{border-top:4px solid var(--c,var(--s1))}
+.card,.prayer{border-top:2px solid var(--gold)}
 .sac-home{margin-top:2rem}
 .sac-home a{color:var(--navy)}
 .sac-home img{width:clamp(4rem,9vw,7rem)}
-.cta>img{position:absolute;top:0;right:0;width:60%;height:100%;object-fit:cover;-webkit-mask-image:linear-gradient(90deg,transparent,#000 70%);mask-image:linear-gradient(90deg,transparent,#000 70%)}
+.cta>img{position:absolute;top:0;right:0;width:60%;height:100%;object-fit:cover;object-position:50% 30%;opacity:.6;-webkit-mask-image:linear-gradient(90deg,transparent,#000 70%);mask-image:linear-gradient(90deg,transparent,#000 70%)}
 .cta::before{display:none}
 .cta .btn{z-index:1}
 .panel-gold{background:var(--gold) var(--gilt)}
@@ -354,7 +362,9 @@ a.card{color:var(--navy);text-decoration:none;display:block}
   .ph-copy{max-width:min(38rem,46vw)}
   .hero-copy{max-width:min(40rem,50vw)}
   .hero .actions{margin-top:clamp(1.1rem,3vh,2rem)}
-  .intro{grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr)}
+  .fees-photo{position:absolute;left:0;top:0;width:58%;height:100%;aspect-ratio:auto;margin:0;-webkit-mask-image:linear-gradient(90deg,#000 52%,transparent);mask-image:linear-gradient(90deg,#000 52%,transparent)}
+  .fees-copy{margin-left:auto;width:min(46%,34rem)}
+  .feature{grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:3rem}
   .letter{grid-template-columns:minmax(14rem,20rem) minmax(0,1fr);gap:4.5rem}
   .letter-flip{grid-template-columns:minmax(0,1fr) minmax(14rem,20rem)}
   .split{grid-template-columns:minmax(0,34em) minmax(20rem,30rem);gap:5rem;justify-content:space-between}
@@ -403,8 +413,7 @@ a.card{color:var(--navy);text-decoration:none;display:block}
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
   .js .reveal,.js img.reveal{opacity:1;transform:none;clip-path:none}
-  .btn:hover,.column:hover{transform:none}
-  .column:hover .photo{transform:none}
+  .feature-main:hover,.btn:hover,a:hover .arch img,.tile:hover img,.tile:hover h3{transform:none}
 }
 
 /* Print: prayers, registration and safeguarding are printed by staff and parents. */
@@ -413,7 +422,8 @@ a.card{color:var(--navy);text-decoration:none;display:block}
   body{background:#FFF;color:#000;font-size:11.5pt;padding:0}
   .site-header,.mobile-bar,.site-footer,.skip,.crumbs,.embed-frame iframe,.ph>img,.hero-photo,.cta,.no-print{display:none!important}
   .devbar{position:static;background:none;color:#000;text-align:left;font-size:9pt}
-  .offset::before,.cta>img{display:none}
+  .arch-line::before,.tile::after,.fees-photo,.cta>img{display:none}
+  .tile h3{position:static;color:#000}
   .factbar{margin-top:0}
   .factbar dl{box-shadow:none}
   .ph,.hero,.band-navy,.band-gold,.band-cream,.factbar dl{background:none!important;color:#000!important;padding-block:0 .5cm;min-height:0!important}

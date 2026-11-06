@@ -39,7 +39,7 @@
   }
 
   /* Scroll reveals: photographs, panels and text ease in once as they arrive. */
-  document.querySelectorAll('main .photo, main .prose, main .panel, main .prayer, main .embed, main .teaching').forEach(function (el) {
+  document.querySelectorAll('main .arch-line, main .prose, main .panel, main .prayer, main .embed, main .teaching').forEach(function (el) {
     if (!el.closest('.reveal')) el.classList.add('reveal');
   });
   var targets = document.querySelectorAll('.reveal');
