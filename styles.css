@@ -397,7 +397,6 @@ a:hover .arch img,.tile:hover img{transform:scale(1.05)}
   .sac-strip li{flex-basis:calc((100% - 2.25rem)/4)}
   /* An odd last item sits centred on its own row */
   .videos>:last-child:nth-child(odd),.grid-5>:last-child:nth-child(odd){grid-column:1/-1;justify-self:center;width:calc(50% - 1.5rem)}
-  .bio>:last-child:nth-child(odd){grid-column:1/-1;text-align:center}
   .footer-grid>:last-child:nth-child(odd){grid-column:1/-1;justify-self:center;text-align:center}
 }
 @media (min-width:56em){
