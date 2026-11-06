@@ -63,13 +63,13 @@ main:focus{outline:0}
 
 /* ── Header ─────────────────────────────────── */
 .devbar{position:sticky;top:0;z-index:60;background:var(--navy-deep);color:var(--on-navy);font-family:var(--sans);font-size:.875rem;line-height:1.5rem;text-align:center}
-.site-header{position:sticky;top:1.5rem;z-index:50;background:var(--navy);color:#FFF;font-family:var(--sans);transition:box-shadow .3s}
+.site-header{position:sticky;top:1.5rem;z-index:50;background:var(--navy-deep);color:#FFF;font-family:var(--sans);border-bottom:3px solid var(--gold);transition:box-shadow .3s}
 .site-header.condensed{box-shadow:0 8px 24px rgba(8,20,48,.25)}
 .header-in{max-width:1460px;margin:auto;padding:.7rem var(--gutter);display:flex;flex-wrap:wrap;align-items:center;gap:.75rem;transition:padding .3s var(--ease)}
 .lockup{flex:1 1 0;min-width:0;color:#FFF;text-decoration:none;min-height:44px;display:flex;align-items:center}
 .lockup span{display:flex;flex-direction:column;line-height:1.2;min-width:0}
 .lockup b{font-family:var(--serif);font-weight:400;font-size:1.1875rem}
-.lockup small{font-size:.875rem;color:var(--on-navy)}
+.lockup small{font-size:.875rem;color:var(--gold)}
 .menu-btn{font:600 1rem var(--sans);min-height:44px;min-width:44px;padding:0 .8rem;background:transparent;color:#FFF;border:1px solid rgba(233,236,243,.4);border-radius:3px;cursor:pointer}
 html:not(.js) .menu-btn{display:none}
 .primary{flex-basis:100%;display:block}
