@@ -38,8 +38,11 @@
     onScroll();
   }
 
-  /* Reveals and the gold rule */
-  var targets = document.querySelectorAll('.reveal, .reveal-rule');
+  /* Scroll reveals: photographs, panels and text ease in once as they arrive. */
+  document.querySelectorAll('main .photo, main .prose, main .panel, main .prayer, main .embed, main .teaching').forEach(function (el) {
+    if (!el.closest('.reveal')) el.classList.add('reveal');
+  });
+  var targets = document.querySelectorAll('.reveal');
   if (reduced || !('IntersectionObserver' in window)) {
     targets.forEach(function (t) { t.classList.add('in'); });
   } else {
@@ -47,11 +50,20 @@
       entries.forEach(function (en) {
         if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
       });
-    }, { rootMargin: '0px 0px -6% 0px' });
+    }, { rootMargin: '0px 0px -8% 0px' });
     targets.forEach(function (t) { io.observe(t); });
     document.querySelectorAll('[data-stagger]').forEach(function (g) {
-      Array.prototype.forEach.call(g.children, function (c, i) { c.style.setProperty('--d', (i * 60) + 'ms'); });
+      Array.prototype.forEach.call(g.children, function (c, i) { c.style.setProperty('--d', (i * 90) + 'ms'); });
     });
+    /* The hero photograph drifts a little slower than the page. */
+    var drift = document.querySelector('.hero-photo');
+    if (drift) {
+      drift.addEventListener('animationend', function () {
+        window.addEventListener('scroll', function () {
+          if (window.scrollY < 900) drift.style.transform = 'translateY(' + (window.scrollY * 0.12) + 'px)';
+        }, { passive: true });
+      });
+    }
   }
 
   /* DEVELOPMENT ONLY — remove at launch. Adding ?reg=open or ?reg=waitlist to the home page or
